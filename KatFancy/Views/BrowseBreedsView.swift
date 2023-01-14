@@ -34,9 +34,9 @@ struct BrowseBreedsView: View {
         }
       }
       .navigationTitle("Cat Breeds")
-      .task {
-        await viewModel.loadBreeds(mockedState: mockedState)
-      }
+    }
+    .task {
+      await viewModel.loadBreeds(mockedState: mockedState)
     }
   }
 
