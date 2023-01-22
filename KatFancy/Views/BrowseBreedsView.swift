@@ -11,7 +11,9 @@ import SwiftUI
 
 struct BrowseBreedsView: View {
   @StateObject var viewModel = BrowseBreedsViewModel()
+  @State private var images: [Breed: UIImage] = [:]
   private let mockedState: BrowseBreedsViewModel.State?
+  private let photoHeightWidth: CGFloat = 150
 
   init(mockedState: BrowseBreedsViewModel.State? = nil) {
     self.mockedState = mockedState
@@ -57,20 +59,20 @@ struct BrowseBreedsView: View {
 
             Spacer()
 
-            CachedAsyncImage(url: breed.photoUrl) { phase in
-              if let image = phase.image {
-                image
+            Group {
+              if let image = images[breed] {
+                Image(uiImage: image)
                   .resizable()
                   .aspectRatio(contentMode: .fit)
-              } else if phase.error != nil {
-                Image(systemName: "exclamationmark.icloud.fill")
-                  .resizable()
+                  .padding()
               } else {
                 ProgressView()
-                  .scaleEffect(3)
               }
             }
-            .frame(width: 124.0)
+            .frame(width: photoHeightWidth)
+            .task {
+              await images[breed] = Current.imageLoader.fetch(breed.photoUrl)
+            }
           }
           .padding()
         }

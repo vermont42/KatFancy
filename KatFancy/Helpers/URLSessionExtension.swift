@@ -23,6 +23,22 @@ extension URLSession {
         }
       }
 
+      for catName in MockData.catNames {
+        if
+          let bundleUrl = Bundle.main.url(forResource: catName, withExtension: MockData.mockPhotoExtension),
+          let actualUrl = URL(string: "\(MockData.photoUrlPrefix)\(catName)\(MockData.mockPhotoExtension)")
+        {
+          do {
+            let data = try Data(contentsOf: bundleUrl)
+            URLProtocolStub.urlDataDict[actualUrl] = data
+          } catch {
+            fatalError("Unable to initialize Data.")
+          }
+        } else {
+          fatalError("Unable to construct path to \(catName).\(MockData.mockPhotoExtension).")
+        }
+      }
+
       didProcessURLs = true
     }
 

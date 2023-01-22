@@ -11,21 +11,20 @@ var Current = World.chooseWorld()
 
 class World: ObservableObject {
   @Published var settings: Settings
-  @Published var session: URLSession
   @Published var soundPlayer: SoundPlayer
   @Published var getterSetter: GetterSetter
+  @Published var imageLoader: ImageLoader
 
-  init(settings: Settings, session: URLSession, soundPlayer: SoundPlayer, getterSetter: GetterSetter) {
+  init(settings: Settings, soundPlayer: SoundPlayer, getterSetter: GetterSetter, imageLoader: ImageLoader) {
     self.settings = settings
-    self.session = session
     self.soundPlayer = soundPlayer
     self.getterSetter = getterSetter
+    self.imageLoader = imageLoader
   }
 
   static func chooseWorld() -> World {
 #if targetEnvironment(simulator)
-    let isRunningUnitTests = NSClassFromString("XCTest") != nil
-    if isRunningUnitTests {
+    if NSClassFromString("XCTest") != nil {
       return World.unitTest
     } else {
       return World.simulator
@@ -39,9 +38,9 @@ class World: ObservableObject {
     let getterSetter = UserDefaultsGetterSetter()
     return World(
       settings: Settings(getterSetter: UserDefaultsGetterSetter()),
-      session: URLSession.shared,
       soundPlayer: RealSoundPlayer(),
-      getterSetter: getterSetter
+      getterSetter: getterSetter,
+      imageLoader: ImageLoader()
     )
   }()
 
@@ -49,9 +48,9 @@ class World: ObservableObject {
     let getterSetter = UserDefaultsGetterSetter()
     return World(
       settings: Settings(getterSetter: getterSetter),
-      session: URLSession.shared,
       soundPlayer: RealSoundPlayer(),
-      getterSetter: getterSetter
+      getterSetter: getterSetter,
+      imageLoader: ImageLoader()
     )
   }()
 
@@ -59,9 +58,9 @@ class World: ObservableObject {
     let getterSetter = DictionaryGetterSetter()
     return World(
       settings: Settings(getterSetter: getterSetter),
-      session: URLSession.stubSession,
       soundPlayer: TestSoundPlayer(),
-      getterSetter: getterSetter
+      getterSetter: getterSetter,
+      imageLoader: ImageLoader()
     )
   }()
 }

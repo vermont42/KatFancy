@@ -9,9 +9,10 @@ import SwiftUI
 
 struct SettingsView: View {
   @ObservedObject var store = SelectionStore(current: Current)
+  @State var isTempDirectoryEmpty = FileManager.isTempDirectoryEmpty()
 
   var body: some View {
-    VStack {
+    ScrollView(.vertical) {
       Text("Settings")
         .font(.largeTitle)
 
@@ -34,6 +35,54 @@ struct SettingsView: View {
       }
 
       Group {
+        Text("URLSession Type")
+          .font(.title)
+
+        Picker("", selection: $store.sessionType) {
+          ForEach(SessionType.allCases, id: \.self) { sessionType in
+            Text(sessionType.displayName).tag(sessionType)
+          }
+        }
+        .segmentedPicker()
+
+        Text("This setting controls which URLSession to use for JSON retrieval and image fetching: shared or stubSession.")
+          .padding()
+      }
+
+      Group {
+        Text("Persistent Cache Method")
+          .font(.title)
+
+        Picker("", selection: $store.persistentCacheMethod) {
+          ForEach(PersistentCacheMethod.allCases, id: \.self) { persistentCacheMethod in
+            Text(persistentCacheMethod.displayName).tag(persistentCacheMethod)
+          }
+        }
+        .segmentedPicker()
+
+        Text("This setting controls whether to use the filesystem to cache images between launches of the app. When activated, this cache makes image loading ridiculously fast.")
+          .padding()
+      }
+
+      Group {
+        if !isTempDirectoryEmpty {
+          Text("Cache Directory")
+            .font(.title)
+
+          Spacer()
+
+          Button("Clear") {
+            FileManager.clearTempDirectory()
+            isTempDirectoryEmpty = true
+          }
+          .destructiveButton()
+
+          Text("Tap this button to clear the contents of the temporary directory, which acts as a persistent image cache.")
+            .padding()
+        }
+      }
+
+      Group {
         Text("Sort Order")
           .font(.title)
 
@@ -51,31 +100,12 @@ struct SettingsView: View {
       Spacer()
     }
     .onAppear {
+      isTempDirectoryEmpty = FileManager.isTempDirectoryEmpty()
       store.current = Current
       store.breedsURL = Current.settings.breedsURL
+      store.sessionType = Current.settings.sessionType
+      store.persistentCacheMethod = Current.settings.persistentCacheMethod
       store.sortOrder = Current.settings.sortOrder
-    }
-  }
-}
-
-final class SelectionStore: ObservableObject {
-  var current: World
-
-  init(current: World) {
-    self.current = current
-    breedsURL = current.settings.breedsURL
-    sortOrder = current.settings.sortOrder
-  }
-
-  @Published var breedsURL: BreedsURL {
-    didSet {
-      current.settings.breedsURL = breedsURL
-    }
-  }
-
-  @Published var sortOrder: SortOrder {
-    didSet {
-      current.settings.sortOrder = sortOrder
     }
   }
 }

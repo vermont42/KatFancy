@@ -18,7 +18,7 @@ class Settings {
     }
   }
   static let breedsURLKey = "breedsURL"
-  static let breedsURLDefault: BreedsURL = .standard
+  static let breedsURLDefault: BreedsURL = .withMore
 
   var sortOrder: SortOrder {
     didSet {
@@ -29,6 +29,32 @@ class Settings {
   }
   static let sortOrderKey = "sortOrder"
   static let sortOrderDefault: SortOrder = .name
+
+  var sessionType: SessionType {
+    didSet {
+      if sessionType != oldValue {
+        getterSetter.set(key: Settings.sessionTypeKey, value: sessionType.rawValue)
+        Task {
+          await Current.imageLoader.setSession(sessionType.session)
+        }
+      }
+    }
+  }
+  static let sessionTypeKey = "sessionType"
+  static let sessionTypeDefault: SessionType = .shared
+
+  var persistentCacheMethod: PersistentCacheMethod {
+    didSet {
+      if persistentCacheMethod != oldValue {
+        getterSetter.set(key: Settings.persistentCacheMethodKey, value: persistentCacheMethod.rawValue)
+        Task {
+          await Current.imageLoader.setPersistentCacheMethod(persistentCacheMethod)
+        }
+      }
+    }
+  }
+  static let persistentCacheMethodKey = "persistentCacheMethod"
+  static let persistentCacheMethodDefault: PersistentCacheMethod = .none
 
   init(getterSetter: GetterSetter) {
     self.getterSetter = getterSetter
@@ -45,6 +71,20 @@ class Settings {
     } else {
       sortOrder = Settings.sortOrderDefault
       getterSetter.set(key: Settings.sortOrderKey, value: sortOrder.rawValue)
+    }
+
+    if let sessionTypeString = getterSetter.get(key: Settings.sessionTypeKey) {
+      sessionType = SessionType(rawValue: sessionTypeString) ?? Settings.sessionTypeDefault
+    } else {
+      sessionType = Settings.sessionTypeDefault
+      getterSetter.set(key: Settings.sessionTypeKey, value: sessionType.rawValue)
+    }
+
+    if let persistentCacheMethodString = getterSetter.get(key: Settings.persistentCacheMethodKey) {
+      persistentCacheMethod = PersistentCacheMethod(rawValue: persistentCacheMethodString) ?? Settings.persistentCacheMethodDefault
+    } else {
+      persistentCacheMethod = Settings.persistentCacheMethodDefault
+      getterSetter.set(key: Settings.persistentCacheMethodKey, value: persistentCacheMethod.rawValue)
     }
   }
 }

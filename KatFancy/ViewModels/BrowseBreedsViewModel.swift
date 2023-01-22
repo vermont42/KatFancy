@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor
 class BrowseBreedsViewModel: ObservableObject {
-  enum State {
+  enum State: Equatable {
     case loading
     case loaded(breeds: [Breed])
     case error
@@ -48,5 +48,9 @@ class BrowseBreedsViewModel: ObservableObject {
     case .error:
       Current.soundPlayer.play(.sadTrombone)
     }
+  }
+
+  func getState() -> State {
+    state
   }
 }

@@ -10,15 +10,24 @@ import SwiftUI
 struct BreedDetailsView: View {
   let breed: Breed
   @Environment(\.openURL) var openURL
+  @State private var image: UIImage?
+  private let photoHeightWidth: CGFloat = 300
 
   var body: some View {
     VStack {
-      CachedAsyncImage(url: breed.photoUrl) { phase in
-        if let image = phase.image {
-          image
+      Group {
+        if let image {
+          Image(uiImage: image)
             .resizable()
             .aspectRatio(contentMode: .fit)
+            .padding()
+        } else {
+          ProgressView()
         }
+      }
+      .frame(width: photoHeightWidth, height: photoHeightWidth)
+      .task {
+        await image = Current.imageLoader.fetch(breed.photoUrl)
       }
 
       ScrollView {
@@ -59,7 +68,7 @@ struct BreedDetailsView: View {
 struct BreedDetailsView_Previews: PreviewProvider {
   static var previews: some View {
     NavigationStack {
-      BreedDetailsView(breed: [Breed].mock[4])
+      BreedDetailsView(breed: [Breed].mock[[Breed].mock.count - 2])
     }
   }
 }
