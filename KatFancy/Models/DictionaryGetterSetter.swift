@@ -5,8 +5,6 @@
 //  Created by Josh Adams on 1/13/19.
 //
 
-import Foundation
-
 class DictionaryGetterSetter: GetterSetter {
   var dictionary: [String: String] = [:]
 

@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// GitHub: https://github.com/vincent-pradeilles/live-building-your-first-swiftui-app
-
 struct BrowseBreedsView: View {
   @StateObject var viewModel = BrowseBreedsViewModel()
   @State private var images: [Breed: UIImage] = [:]

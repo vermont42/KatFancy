@@ -24,6 +24,5 @@ class UserDefaultsGetterSetter: GetterSetter {
 
   func set(key: String, value: String) {
     userDefaults.set(value, forKey: key)
-    userDefaults.synchronize()
   }
 }

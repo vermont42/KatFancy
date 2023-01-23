@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Breed: Decodable, Identifiable, Hashable, Equatable {
+struct Breed: Decodable, Equatable, Hashable, Identifiable {
   let id: String
   let name: String
   let knownFor: String
@@ -52,6 +52,10 @@ struct Breed: Decodable, Identifiable, Hashable, Equatable {
     self.credit = credit
     self.license = license
     self.description = description
+  }
+
+  func hash(into hasher: inout Hasher) {
+    hasher.combine(name)
   }
 
   static func == (lhs: Breed, rhs: Breed) -> Bool {

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct SettingsView: View {
-  @ObservedObject var store = SelectionStore(current: Current)
-  @State var isTempDirectoryEmpty = FileManager.isTempDirectoryEmpty()
+  @StateObject var viewModel = SettingsViewModel()
 
   var body: some View {
     ScrollView(.vertical) {
@@ -23,7 +22,7 @@ struct SettingsView: View {
         Text("Breeds URL")
           .font(.title)
 
-        Picker("", selection: $store.breedsURL) {
+        Picker("", selection: $viewModel.store.breedsURL) {
           ForEach(BreedsURL.allCases, id: \.self) { breedsURL in
             Text(breedsURL.displayName).tag(breedsURL)
           }
@@ -38,7 +37,7 @@ struct SettingsView: View {
         Text("URLSession Type")
           .font(.title)
 
-        Picker("", selection: $store.sessionType) {
+        Picker("", selection: $viewModel.store.sessionType) {
           ForEach(SessionType.allCases, id: \.self) { sessionType in
             Text(sessionType.displayName).tag(sessionType)
           }
@@ -53,7 +52,7 @@ struct SettingsView: View {
         Text("Persistent Cache Method")
           .font(.title)
 
-        Picker("", selection: $store.persistentCacheMethod) {
+        Picker("", selection: $viewModel.store.persistentCacheMethod) {
           ForEach(PersistentCacheMethod.allCases, id: \.self) { persistentCacheMethod in
             Text(persistentCacheMethod.displayName).tag(persistentCacheMethod)
           }
@@ -65,15 +64,14 @@ struct SettingsView: View {
       }
 
       Group {
-        if !isTempDirectoryEmpty {
+        if !viewModel.isTempDirectoryEmpty {
           Text("Cache Directory")
             .font(.title)
 
           Spacer()
 
           Button("Clear") {
-            FileManager.clearTempDirectory()
-            isTempDirectoryEmpty = true
+            viewModel.clearTempDirectory()
           }
           .destructiveButton()
 
@@ -86,7 +84,7 @@ struct SettingsView: View {
         Text("Sort Order")
           .font(.title)
 
-        Picker("", selection: $store.sortOrder) {
+        Picker("", selection: $viewModel.store.sortOrder) {
           ForEach(SortOrder.allCases, id: \.self) { sortOrder in
             Text(sortOrder.displayName).tag(sortOrder)
           }
@@ -100,12 +98,7 @@ struct SettingsView: View {
       Spacer()
     }
     .onAppear {
-      isTempDirectoryEmpty = FileManager.isTempDirectoryEmpty()
-      store.current = Current
-      store.breedsURL = Current.settings.breedsURL
-      store.sessionType = Current.settings.sessionType
-      store.persistentCacheMethod = Current.settings.persistentCacheMethod
-      store.sortOrder = Current.settings.sortOrder
+      viewModel.configure()
     }
   }
 }

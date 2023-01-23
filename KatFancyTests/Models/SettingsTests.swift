@@ -28,4 +28,24 @@ class SettingsTests: XCTestCase {
     XCTAssertEqual(SortOrder.popularity, settings.sortOrder)
     Current.settings.sortOrder = Settings.sortOrderDefault
   }
+
+  func testSessionTypeSetting() {
+    let settings = Settings(getterSetter: DictionaryGetterSetter())
+    XCTAssertEqual(Settings.sessionTypeDefault, settings.sessionType)
+    XCTAssertEqual(SessionType.shared, settings.sessionType)
+    settings.sessionType = .stub
+    XCTAssertNotEqual(Settings.sessionTypeDefault, settings.sessionType)
+    XCTAssertEqual(SessionType.stub, settings.sessionType)
+    Current.settings.sessionType = Settings.sessionTypeDefault
+  }
+
+  func testPersistentCacheMethodSetting() {
+    let settings = Settings(getterSetter: DictionaryGetterSetter())
+    XCTAssertEqual(Settings.persistentCacheMethodDefault, settings.persistentCacheMethod)
+    XCTAssertEqual(PersistentCacheMethod.none, settings.persistentCacheMethod)
+    settings.persistentCacheMethod = .filesystem
+    XCTAssertNotEqual(Settings.persistentCacheMethodDefault, settings.persistentCacheMethod)
+    XCTAssertEqual(PersistentCacheMethod.filesystem, settings.persistentCacheMethod)
+    Current.settings.persistentCacheMethod = Settings.persistentCacheMethodDefault
+  }
 }

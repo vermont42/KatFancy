@@ -19,7 +19,7 @@ final class FileManagerExtensionsTests: XCTestCase {
 
   func testClearTemporaryDirectory() {
     XCTAssert(FileManager.isTempDirectoryEmpty())
-    writeFileToFilesystem()
+    FileManagerExtensionsTests.writeFileToFilesystem()
     XCTAssertFalse(FileManager.isTempDirectoryEmpty())
     FileManager.clearTempDirectory()
     XCTAssert(FileManager.isTempDirectoryEmpty())
@@ -27,11 +27,11 @@ final class FileManagerExtensionsTests: XCTestCase {
 
   func testIsTemporaryDirectoryEmpty() {
     XCTAssert(FileManager.isTempDirectoryEmpty())
-    writeFileToFilesystem()
+    FileManagerExtensionsTests.writeFileToFilesystem()
     XCTAssertFalse(FileManager.isTempDirectoryEmpty())
   }
 
-  private func writeFileToFilesystem() {
+  static func writeFileToFilesystem() {
     let contents = "🥥"
     let filename = "\(contents).txt"
     let fullPath = FileManager.default.temporaryDirectory.appendingPathComponent(filename)

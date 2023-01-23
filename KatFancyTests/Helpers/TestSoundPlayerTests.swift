@@ -2,7 +2,7 @@
 //  TestSoundPlayerTests.swift
 //  KatFancyTests
 //
-//  Created by Joshua Adams on 1/20/23.
+//  Created by Josh Adams on 1/20/23.
 //
 
 @testable import KatFancy

@@ -5,7 +5,7 @@
 //  Created by Josh Adams on 1/20/23.
 //
 
-import SwiftUI
+import Foundation
 
 final class SelectionStore: ObservableObject {
   var current: World

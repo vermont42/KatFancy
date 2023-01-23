@@ -5,7 +5,7 @@
 //  Created by Josh Adams on 1/11/23 based on concepts described here:
 //  https://www.pointfree.co/blog/posts/21-how-to-control-the-world
 
-import SwiftUI
+import Foundation
 
 var Current = World.chooseWorld()
 
@@ -37,7 +37,7 @@ class World: ObservableObject {
   static let device: World = {
     let getterSetter = UserDefaultsGetterSetter()
     return World(
-      settings: Settings(getterSetter: UserDefaultsGetterSetter()),
+      settings: Settings(getterSetter: getterSetter),
       soundPlayer: RealSoundPlayer(),
       getterSetter: getterSetter,
       imageLoader: ImageLoader()

@@ -5,8 +5,6 @@
 //  Created by Josh Adams on 1/14/23.
 //
 
-import Foundation
-
 enum MockData {
   static let mockPhotoExtension = ".jpg"
   static let photoUrlPrefix = "https://raceconditionsoftware.s3.us-west-1.amazonaws.com/CatFancy/img/"

@@ -5,8 +5,6 @@
 //  Created by Josh Adams on 9/25/22.
 //
 
-import Foundation
-
 class Settings {
   let getterSetter: GetterSetter
 

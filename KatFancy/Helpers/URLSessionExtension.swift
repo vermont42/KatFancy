@@ -12,6 +12,7 @@ extension URLSession {
 
   static var stubSession: URLSession {
     if !didProcessURLs {
+      didProcessURLs = true
       BreedsURL.allCases.forEach {
         if let path = Bundle.main.path(forResource: $0.url.lastPathComponent, ofType: nil) {
           do {
@@ -38,8 +39,6 @@ extension URLSession {
           fatalError("Unable to construct path to \(catName).\(MockData.mockPhotoExtension).")
         }
       }
-
-      didProcessURLs = true
     }
 
     let config = URLSessionConfiguration.ephemeral
