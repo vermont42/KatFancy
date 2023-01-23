@@ -9,7 +9,6 @@ import Foundation
 
 class BreedsLoader {
   func loadBreeds() async throws -> [Breed] {
-    print("@@@ session: \(Current.settings.sessionType.displayName)  URL: \(Current.settings.breedsURL.url)")
     let (data, _) = try await Current.settings.sessionType.session.data(from: Current.settings.breedsURL.url)
     let decoder = JSONDecoder()
     decoder.keyDecodingStrategy = .convertFromSnakeCase
