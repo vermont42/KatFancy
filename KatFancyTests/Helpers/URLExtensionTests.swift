@@ -8,8 +8,9 @@
 @testable import KatFancy
 import XCTest
 
-extension URL {
-  static func couldNotInit(urlString: String) -> String {
-    "Could not initialize URL from \(urlString)."
+class URLExtensionTests: XCTestCase {
+  func testCouldNotInit() {
+    let 🙀 = "🙀"
+    XCTAssertEqual("Could not initialize URL from \(🙀).", URL.couldNotInit(urlString: 🙀))
   }
 }

@@ -15,16 +15,6 @@ final class BrowseBreedsViewModelTests: XCTestCase {
     let loadingState = await vm.getState()
     XCTAssertEqual(loadingState, .loading)
 
-//    await vm.loadBreeds(mockedState: .loaded(breeds: [Breed].mock))
-//    let mockedLoadedState = await vm.getState()
-//    switch mockedLoadedState {
-//    case .loading, .error:
-//      XCTFail("Unexpected state: \(mockedLoadedState)")
-//      return
-//    case .loaded(let breeds):
-//      XCTAssertEqual(breeds.count, 5)
-//    }
-
     await vm.loadBreeds()
     let actualLoadedState = await vm.getState()
     switch actualLoadedState {
