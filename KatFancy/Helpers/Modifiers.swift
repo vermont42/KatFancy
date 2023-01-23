@@ -34,7 +34,7 @@ private struct DestructiveButton: ViewModifier {
   }
 }
 
-struct ModifiersView: View {
+private struct ModifiersView: View {
   @State var selection = BreedsURL.withMore
 
   var body: some View {
