@@ -17,10 +17,6 @@ KatFancy is an iOS app that demonstrates iOS-development techniques, including u
 
 I developed KatFancy using Xcode 14.1, iOS 16.1, SwiftLint 0.30.1, and [this song](https://youtu.be/gHFb1WFG5PU?t=3630).
 
-## Discussion
-
-To be completed.
-
 ## Screenshots
 
 | Browsing | Details |
