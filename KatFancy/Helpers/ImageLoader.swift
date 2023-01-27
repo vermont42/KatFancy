@@ -77,8 +77,9 @@ actor ImageLoader {
   func persistImage(_ image: UIImage, for url: URL) {
     switch persistentCacheMethod {
     case .filesystem:
+      let goodEnoughQuality = 0.8
       guard
-        let data = image.jpegData(compressionQuality: 0.8),
+        let data = image.jpegData(compressionQuality: goodEnoughQuality),
         let persistentCacheKey = persistentCacheKey(for: url)
       else {
         return
