@@ -12,6 +12,7 @@ struct KatFancyTestApp: App {
     WindowGroup {
       VStack {
         Text("Running Unit Tests")
+          .font(.largeTitle)
         ProgressView()
       }
     }

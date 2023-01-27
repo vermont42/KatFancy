@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Breed: Decodable, Equatable, Hashable, Identifiable {
-  let id: String
+struct Breed: Decodable, Identifiable, Hashable, Equatable {
+  var id: String { name }
   let name: String
   let knownFor: String
   let popularity: Int
@@ -17,42 +17,6 @@ struct Breed: Decodable, Equatable, Hashable, Identifiable {
   let credit: String
   let license: License
   let description: String
-
-  enum CodingKeys: String, CodingKey {
-    case name
-    case knownFor
-    case popularity
-    case photoUrl
-    case infoUrl
-    case credit
-    case license
-    case description
-  }
-
-  init(from decoder: Decoder) throws {
-    let values = try decoder.container(keyedBy: CodingKeys.self)
-    id = try values.decode(String.self, forKey: .name)
-    name = try values.decode(String.self, forKey: .name)
-    knownFor = try values.decode(String.self, forKey: .knownFor)
-    popularity = try values.decode(Int.self, forKey: .popularity)
-    photoUrl = try values.decode(URL.self, forKey: .photoUrl)
-    infoUrl = try values.decode(URL.self, forKey: .infoUrl)
-    credit = try values.decode(String.self, forKey: .credit)
-    license = try values.decode(License.self, forKey: .license)
-    description = try values.decode(String.self, forKey: .description)
-  }
-
-  init(name: String, knownFor: String, popularity: Int, photoUrl: URL, infoUrl: URL, credit: String, license: License, description: String) {
-    id = name
-    self.name = name
-    self.knownFor = knownFor
-    self.popularity = popularity
-    self.photoUrl = photoUrl
-    self.infoUrl = infoUrl
-    self.credit = credit
-    self.license = license
-    self.description = description
-  }
 
   func hash(into hasher: inout Hasher) {
     hasher.combine(name)
