@@ -8,10 +8,9 @@
 @testable import KatFancy
 import XCTest
 
-class BreedsRequesterTests: XCTestCase {
+class BreedsLoaderTests: XCTestCase {
   func testLoadBreeds() async throws {
-    let loader = BreedsLoader()
-    let breeds = try await loader.loadBreeds()
+    let breeds = try await BreedsLoader.loadBreeds()
     let expectedCount = 19
     XCTAssertEqual(expectedCount, breeds.count)
   }
