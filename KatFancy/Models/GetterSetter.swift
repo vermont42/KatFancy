@@ -1,9 +1,4 @@
-//
-//  GetterSetter.swift
-//  KatFancy
-//
-//  Created by Josh Adams on 1/13/19.
-//
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
 
 protocol GetterSetter {
   func get(key: String) -> String?

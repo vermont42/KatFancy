@@ -1,9 +1,4 @@
-//
-//  BreedsURL.swift
-//  KatFancy
-//
-//  Created by Josh Adams on 9/25/22.
-//
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
 
 import Foundation
 

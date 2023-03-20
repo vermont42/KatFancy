@@ -1,9 +1,4 @@
-//
-//  BrowseBreedsViewModelTests.swift
-//  KatFancyTests
-//
-//  Created by Josh Adams on 1/20/23.
-//
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
 
 @testable import KatFancy
 import XCTest

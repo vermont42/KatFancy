@@ -1,9 +1,5 @@
-//
-//  World.swift
-//  KatFancy
-//
-//  Created by Josh Adams on 1/11/23 based on concepts described here:
-//  https://www.pointfree.co/blog/posts/21-how-to-control-the-world
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
+// https://www.pointfree.co/blog/posts/21-how-to-control-the-world
 
 import Foundation
 

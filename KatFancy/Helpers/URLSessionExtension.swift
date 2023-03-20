@@ -1,9 +1,4 @@
-//
-//  URLSessionExtension.swift
-//  KatFancy
-//
-//  Created by Josh Adams on 9/16/22.
-//
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 9/16/22.
 
 import Foundation
 

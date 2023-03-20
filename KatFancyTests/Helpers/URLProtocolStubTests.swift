@@ -1,9 +1,4 @@
-//
-//  URLProtocolStubTests.swift
-//  KatFancyTests
-//
-//  Created by Josh Adams on 6/1/21.
-//
+// Created by Josh Adams, who holds the copyright and reserves all rights, on 1/6/23.
 
 @testable import KatFancy
 import XCTest
