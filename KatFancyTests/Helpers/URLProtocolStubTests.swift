@@ -4,17 +4,17 @@
 import XCTest
 
 class URLProtocolStubTests: XCTestCase {
-  private static var backupTestURLs = [URL: Data]()
+  private static var backupURLDataDict = [URL: Data]()
 
   override class func setUp() {
-    backupTestURLs = URLProtocolStub.urlDataDict
+    backupURLDataDict = URLSession.urlDataDict
   }
 
   override class func tearDown() {
-    URLProtocolStub.urlDataDict = backupTestURLs
+    URLSession.urlDataDict = backupURLDataDict
   }
 
-  var url: URL {
+  private var url: URL {
     let urlString = "https://racecondition.software"
     if let url = URL(string: urlString) {
       return url
@@ -23,7 +23,7 @@ class URLProtocolStubTests: XCTestCase {
     }
   }
 
-  var request: URLRequest {
+  private var request: URLRequest {
     URLRequest(url: url)
   }
 
@@ -36,21 +36,20 @@ class URLProtocolStubTests: XCTestCase {
   }
 
   func testStartLoading() {
-    URLProtocolStub.urlDataDict = [url: Data()]
+    URLSession.urlDataDict = [url: Data()]
     let exp = expectation(description: "Waiting for load.")
-    let stub: URLProtocolStub
-    let client = ProtocolClientSpy { urlProtocol in
+    let protocolClientStub = ProtocolClientStub(didFinishLoading: { urlProtocol in
       XCTAssert(urlProtocol is URLProtocolStub)
       exp.fulfill()
-    }
-    stub = URLProtocolStub(request: request, cachedResponse: nil, client: client)
-    stub.startLoading()
+    })
+    let urlProtocolStub = URLProtocolStub(request: request, cachedResponse: nil, client: protocolClientStub)
+    urlProtocolStub.startLoading()
     let timeout: TimeInterval = 1.0
     wait(for: [exp], timeout: timeout)
   }
 }
 
-private class ProtocolClientSpy: NSObject, URLProtocolClient {
+private class ProtocolClientStub: NSObject, URLProtocolClient {
   let didFinishLoading: (URLProtocol) -> ()
 
   init(didFinishLoading: @escaping (URLProtocol) -> ()) {
