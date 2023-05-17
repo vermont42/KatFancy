@@ -17,37 +17,25 @@ class World: ObservableObject {
   }
 
   static func chooseWorld() -> World {
-#if targetEnvironment(simulator)
     if NSClassFromString("XCTest") != nil {
       return World.unitTest
     } else {
-      return World.simulator
+      return World.production
     }
-#else
-    return World.device
-#endif
   }
 
-  static let device: World = {
-    return World(
-      settings: Settings(getterSetter: UserDefaultsGetterSetter()),
-      soundPlayer: RealSoundPlayer(),
-      imageLoader: ImageLoader()
-    )
-  }()
-
-  static let simulator: World = {
-    return World(
-      settings: Settings(getterSetter: UserDefaultsGetterSetter()),
-      soundPlayer: RealSoundPlayer(),
+  static let production: World = {
+    World(
+      settings: Settings(getterSetter: GetterSetterReal()),
+      soundPlayer: SoundPlayerReal(),
       imageLoader: ImageLoader()
     )
   }()
 
   static let unitTest: World = {
-    return World(
-      settings: Settings(getterSetter: DictionaryGetterSetter()),
-      soundPlayer: TestSoundPlayer(),
+    World(
+      settings: Settings(getterSetter: GetterSetterFake()),
+      soundPlayer: SoundPlayerDummy(),
       imageLoader: ImageLoader()
     )
   }()

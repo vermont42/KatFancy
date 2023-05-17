@@ -5,7 +5,7 @@ import XCTest
 
 class SettingsTests: XCTestCase {
   func testBreedsURLSetting() {
-    let settings = Settings(getterSetter: DictionaryGetterSetter())
+    let settings = Settings(getterSetter: GetterSetterFake())
     XCTAssertEqual(Settings.breedsURLDefault, settings.breedsURL)
     XCTAssertEqual(BreedsURL.withMore, settings.breedsURL)
     settings.breedsURL = .withMore
@@ -15,7 +15,7 @@ class SettingsTests: XCTestCase {
   }
 
   func testSortOrderSetting() {
-    let settings = Settings(getterSetter: DictionaryGetterSetter())
+    let settings = Settings(getterSetter: GetterSetterFake())
     XCTAssertEqual(Settings.sortOrderDefault, settings.sortOrder)
     XCTAssertEqual(SortOrder.name, settings.sortOrder)
     settings.sortOrder = .popularity
@@ -25,7 +25,7 @@ class SettingsTests: XCTestCase {
   }
 
   func testSessionTypeSetting() {
-    let settings = Settings(getterSetter: DictionaryGetterSetter())
+    let settings = Settings(getterSetter: GetterSetterFake())
     XCTAssertEqual(Settings.sessionTypeDefault, settings.sessionType)
     XCTAssertEqual(SessionType.shared, settings.sessionType)
     settings.sessionType = .stub
@@ -35,7 +35,7 @@ class SettingsTests: XCTestCase {
   }
 
   func testPersistentCacheMethodSetting() {
-    let settings = Settings(getterSetter: DictionaryGetterSetter())
+    let settings = Settings(getterSetter: GetterSetterFake())
     XCTAssertEqual(Settings.persistentCacheMethodDefault, settings.persistentCacheMethod)
     XCTAssertEqual(PersistentCacheMethod.none, settings.persistentCacheMethod)
     settings.persistentCacheMethod = .filesystem

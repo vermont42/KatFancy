@@ -4,21 +4,15 @@
 import XCTest
 
 class WorldTests: XCTestCase {
-  func testDeviceWorld() {
-    let world = World.device
-    XCTAssert(world.settings.getterSetter is UserDefaultsGetterSetter)
-    XCTAssert(world.soundPlayer is RealSoundPlayer)
-  }
-
-  func testSimulatorWorld() {
-    let world = World.simulator
-    XCTAssert(world.settings.getterSetter is UserDefaultsGetterSetter)
-    XCTAssert(world.soundPlayer is RealSoundPlayer)
+  func testProductionWorld() {
+    let world = World.production
+    XCTAssert(world.settings.getterSetter is GetterSetterReal)
+    XCTAssert(world.soundPlayer is SoundPlayerReal)
   }
 
   func testUnitTestWorld() {
     let world = World.unitTest
-    XCTAssert(world.settings.getterSetter is DictionaryGetterSetter)
-    XCTAssert(world.soundPlayer is TestSoundPlayer)
+    XCTAssert(world.settings.getterSetter is GetterSetterFake)
+    XCTAssert(world.soundPlayer is SoundPlayerDummy)
   }
 }
