@@ -58,7 +58,6 @@
 		030FCAED2968D90A00EA23C8 /* KatFancyApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FCAEC2968D90A00EA23C8 /* KatFancyApp.swift */; };
 		030FCAEF2968D90A00EA23C8 /* BrowseBreedsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FCAEE2968D90A00EA23C8 /* BrowseBreedsView.swift */; };
 		030FCAF12968D90D00EA23C8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 030FCAF02968D90D00EA23C8 /* Assets.xcassets */; };
-		030FCAF42968D90D00EA23C8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 030FCAF32968D90D00EA23C8 /* Preview Assets.xcassets */; };
 		030FCB1A2968DA3800EA23C8 /* Breeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FCB172968DA3800EA23C8 /* Breeds.swift */; };
 		030FCB1B2968DA3800EA23C8 /* Breed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FCB182968DA3800EA23C8 /* Breed.swift */; };
 		030FCB1C2968DA3800EA23C8 /* BreedsURL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FCB192968DA3800EA23C8 /* BreedsURL.swift */; };
@@ -154,7 +153,6 @@
 		030FCAEC2968D90A00EA23C8 /* KatFancyApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KatFancyApp.swift; sourceTree = "<group>"; };
 		030FCAEE2968D90A00EA23C8 /* BrowseBreedsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrowseBreedsView.swift; sourceTree = "<group>"; };
 		030FCAF02968D90D00EA23C8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		030FCAF32968D90D00EA23C8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		030FCAF92968D90E00EA23C8 /* KatFancyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KatFancyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		030FCB172968DA3800EA23C8 /* Breeds.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Breeds.swift; sourceTree = "<group>"; };
 		030FCB182968DA3800EA23C8 /* Breed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Breed.swift; sourceTree = "<group>"; };
@@ -314,19 +312,10 @@
 				030FCB1D2968DA8200EA23C8 /* Helpers */,
 				030B7F2C2969CC1C00C04F99 /* MockData */,
 				030FCB162968DA1100EA23C8 /* Models */,
-				030FCAF22968D90D00EA23C8 /* Preview Content */,
 				030B7F2F2969F96600C04F99 /* ViewModels */,
 				030FCB222969387A00EA23C8 /* Views */,
 			);
 			path = KatFancy;
-			sourceTree = "<group>";
-		};
-		030FCAF22968D90D00EA23C8 /* Preview Content */ = {
-			isa = PBXGroup;
-			children = (
-				030FCAF32968D90D00EA23C8 /* Preview Assets.xcassets */,
-			);
-			path = "Preview Content";
 			sourceTree = "<group>";
 		};
 		030FCAFC2968D90E00EA23C8 /* KatFancyTests */ = {
@@ -520,7 +509,6 @@
 				03FCC16F29737D3600933493 /* RussianBlue.jpg in Resources */,
 				03FCC16C29737D3600933493 /* Bengal.jpg in Resources */,
 				03FCC16729737D3600933493 /* Siamese.jpg in Resources */,
-				030FCAF42968D90D00EA23C8 /* Preview Assets.xcassets in Resources */,
 				030FCAF12968D90D00EA23C8 /* Assets.xcassets in Resources */,
 				03FCC16329737D3600933493 /* Burmese.jpg in Resources */,
 				030B7F6629707B2200C04F99 /* breeds_with_more.json in Resources */,
@@ -761,7 +749,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"KatFancy/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -792,7 +779,6 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_ASSET_PATHS = "\"KatFancy/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
