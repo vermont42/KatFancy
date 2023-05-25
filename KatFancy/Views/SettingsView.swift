@@ -44,6 +44,21 @@ struct SettingsView: View {
       }
 
       Group {
+        Text("Sort Order")
+          .font(.title)
+
+        Picker("", selection: $viewModel.store.sortOrder) {
+          ForEach(SortOrder.allCases, id: \.self) { sortOrder in
+            Text(sortOrder.displayName).tag(sortOrder)
+          }
+        }
+        .segmentedPicker()
+
+        Text("This setting controls the sort order of breeds on FancyKat's breed-browsing screen.")
+          .padding()
+      }
+
+      Group {
         Text("Persistent Cache Method")
           .font(.title)
 
@@ -73,21 +88,6 @@ struct SettingsView: View {
           Text("Tap this button to clear the contents of the temporary directory, which acts as a persistent image cache.")
             .padding()
         }
-      }
-
-      Group {
-        Text("Sort Order")
-          .font(.title)
-
-        Picker("", selection: $viewModel.store.sortOrder) {
-          ForEach(SortOrder.allCases, id: \.self) { sortOrder in
-            Text(sortOrder.displayName).tag(sortOrder)
-          }
-        }
-        .segmentedPicker()
-
-        Text("This setting controls the sort order of breeds on FancyKat's breed-browsing screen.")
-          .padding()
       }
 
       Spacer()
