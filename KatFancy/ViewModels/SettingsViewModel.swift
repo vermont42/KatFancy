@@ -12,7 +12,6 @@ class SettingsViewModel: ObservableObject {
     store.current = Current
     store.breedsURL = Current.settings.breedsURL
     store.sessionType = Current.settings.sessionType
-    store.persistentCacheMethod = Current.settings.persistentCacheMethod
     store.sortOrder = Current.settings.sortOrder
   }
 

@@ -58,38 +58,6 @@ struct SettingsView: View {
           .padding()
       }
 
-      Group {
-        Text("Persistent Cache Method")
-          .font(.title)
-
-        Picker("", selection: $viewModel.store.persistentCacheMethod) {
-          ForEach(PersistentCacheMethod.allCases, id: \.self) { persistentCacheMethod in
-            Text(persistentCacheMethod.displayName).tag(persistentCacheMethod)
-          }
-        }
-        .segmentedPicker()
-
-        Text("This setting controls whether to use the filesystem to cache images between launches of the app. When activated, this cache makes image loading ridiculously fast.")
-          .padding()
-      }
-
-      Group {
-        if !viewModel.isTempDirectoryEmpty {
-          Text("Cache Directory")
-            .font(.title)
-
-          Spacer()
-
-          Button("Clear") {
-            viewModel.clearTempDirectory()
-          }
-          .destructiveButton()
-
-          Text("Tap this button to clear the contents of the temporary directory, which acts as a persistent image cache.")
-            .padding()
-        }
-      }
-
       Spacer()
     }
     .onAppear {

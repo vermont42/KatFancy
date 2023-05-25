@@ -66,7 +66,6 @@
 		030FCB252969397000EA23C8 /* BreedsLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 030FCB242969397000EA23C8 /* BreedsLoader.swift */; };
 		03BAC2C42977599500D07363 /* FileManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03BAC2C32977599500D07363 /* FileManagerExtensions.swift */; };
 		03FCC1442973662200933493 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCC1432973662200933493 /* ImageLoader.swift */; };
-		03FCC146297379F400933493 /* PersistentCacheMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCC145297379F400933493 /* PersistentCacheMethod.swift */; };
 		03FCC14829737A6300933493 /* SessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 03FCC14729737A6300933493 /* SessionType.swift */; };
 		03FCC14D29737AD900933493 /* Abyssinian.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03FCC14A29737AD900933493 /* Abyssinian.jpg */; };
 		03FCC14E29737AD900933493 /* TurkishAngora.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 03FCC14B29737AD900933493 /* TurkishAngora.jpg */; };
@@ -162,7 +161,6 @@
 		030FCB242969397000EA23C8 /* BreedsLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreedsLoader.swift; sourceTree = "<group>"; };
 		03BAC2C32977599500D07363 /* FileManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerExtensions.swift; sourceTree = "<group>"; };
 		03FCC1432973662200933493 /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
-		03FCC145297379F400933493 /* PersistentCacheMethod.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistentCacheMethod.swift; sourceTree = "<group>"; };
 		03FCC14729737A6300933493 /* SessionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionType.swift; sourceTree = "<group>"; };
 		03FCC14A29737AD900933493 /* Abyssinian.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = Abyssinian.jpg; sourceTree = "<group>"; };
 		03FCC14B29737AD900933493 /* TurkishAngora.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = TurkishAngora.jpg; sourceTree = "<group>"; };
@@ -335,7 +333,6 @@
 				030FCB172968DA3800EA23C8 /* Breeds.swift */,
 				030FCB192968DA3800EA23C8 /* BreedsURL.swift */,
 				030FCB202968DAE000EA23C8 /* License.swift */,
-				03FCC145297379F400933493 /* PersistentCacheMethod.swift */,
 				0304ABDC297B18960029A775 /* SelectionStore.swift */,
 				03FCC14729737A6300933493 /* SessionType.swift */,
 				030B7F4C296F5AAC00C04F99 /* Settings.swift */,
@@ -560,7 +557,6 @@
 				03FCC1442973662200933493 /* ImageLoader.swift in Sources */,
 				030B7F4B296F5A5600C04F99 /* GetterSetterFake.swift in Sources */,
 				030B7F44296F59FD00C04F99 /* SoundPlayer.swift in Sources */,
-				03FCC146297379F400933493 /* PersistentCacheMethod.swift in Sources */,
 				030FCB1C2968DA3800EA23C8 /* BreedsURL.swift in Sources */,
 				030B7F4F296F5ADC00C04F99 /* SortOrder.swift in Sources */,
 				030B7F43296F59FD00C04F99 /* SoundPlayerReal.swift in Sources */,

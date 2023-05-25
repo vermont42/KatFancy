@@ -9,7 +9,6 @@ final class SelectionStore: ObservableObject {
     self.current = current
     breedsURL = current.settings.breedsURL
     sessionType = current.settings.sessionType
-    persistentCacheMethod = current.settings.persistentCacheMethod
     sortOrder = current.settings.sortOrder
   }
 
@@ -22,18 +21,6 @@ final class SelectionStore: ObservableObject {
   @Published var sessionType: SessionType {
     didSet {
       current.settings.sessionType = sessionType
-      Task {
-        await current.imageLoader.configure(session: sessionType.session, persistentCacheMethod: current.settings.persistentCacheMethod)
-      }
-    }
-  }
-
-  @Published var persistentCacheMethod: PersistentCacheMethod {
-    didSet {
-      current.settings.persistentCacheMethod = persistentCacheMethod
-      Task {
-        await current.imageLoader.configure(session: current.settings.sessionType.session, persistentCacheMethod: persistentCacheMethod)
-      }
     }
   }
 
