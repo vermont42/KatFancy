@@ -14,16 +14,6 @@ class SettingsTests: XCTestCase {
     Current.settings.breedsURL = Settings.breedsURLDefault
   }
 
-  func testSortOrderSetting() {
-    let settings = Settings(getterSetter: GetterSetterFake())
-    XCTAssertEqual(Settings.sortOrderDefault, settings.sortOrder)
-    XCTAssertEqual(SortOrder.name, settings.sortOrder)
-    settings.sortOrder = .popularity
-    XCTAssertNotEqual(Settings.sortOrderDefault, settings.sortOrder)
-    XCTAssertEqual(SortOrder.popularity, settings.sortOrder)
-    Current.settings.sortOrder = Settings.sortOrderDefault
-  }
-
   func testSessionTypeSetting() {
     let settings = Settings(getterSetter: GetterSetterFake())
     XCTAssertEqual(Settings.sessionTypeDefault, settings.sessionType)
@@ -34,13 +24,13 @@ class SettingsTests: XCTestCase {
     Current.settings.sessionType = Settings.sessionTypeDefault
   }
 
-  func testPersistentCacheMethodSetting() {
+  func testSortOrderSetting() {
     let settings = Settings(getterSetter: GetterSetterFake())
-    XCTAssertEqual(Settings.persistentCacheMethodDefault, settings.persistentCacheMethod)
-    XCTAssertEqual(PersistentCacheMethod.none, settings.persistentCacheMethod)
-    settings.persistentCacheMethod = .filesystem
-    XCTAssertNotEqual(Settings.persistentCacheMethodDefault, settings.persistentCacheMethod)
-    XCTAssertEqual(PersistentCacheMethod.filesystem, settings.persistentCacheMethod)
-    Current.settings.persistentCacheMethod = Settings.persistentCacheMethodDefault
+    XCTAssertEqual(Settings.sortOrderDefault, settings.sortOrder)
+    XCTAssertEqual(SortOrder.name, settings.sortOrder)
+    settings.sortOrder = .popularity
+    XCTAssertNotEqual(Settings.sortOrderDefault, settings.sortOrder)
+    XCTAssertEqual(SortOrder.popularity, settings.sortOrder)
+    Current.settings.sortOrder = Settings.sortOrderDefault
   }
 }
