@@ -11,7 +11,7 @@ KatFancy
 
 ## Introduction
 
-KatFancy is an iOS app that demonstrates iOS-development techniques, including use of SwiftUI. Users can browse breeds of cats with images from various sources and breed info from Wikipedia.
+KatFancy is an iOS app that demonstrates iOS-development techniques, including use of SwiftUI. Users can browse breeds of cats with images from various sources and breed info from Wikipedia. KatFancy accompanies a [blog post](https://racecondition.software/blog/swiftui-homeworks/) about SwiftUI iOS-developer coding challenges.
 
 ## Build Tools & Versions Used
 
