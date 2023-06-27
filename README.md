@@ -23,9 +23,9 @@ I developed KatFancy using Xcode 14.1, iOS 16.1, SwiftLint 0.30.1, and [this son
 | -------- | ------- |
 | ![](img/browse.png) | ![](img/details.png) |
 
-| Settings | Splash |
+| Settings | Launch |
 | -------- | ------- |
-| ![](img/settings.png) | ![](img/splash.png) |
+| ![](img/settings.png) | ![](img/launch.png) |
 
 ## Credits
 
